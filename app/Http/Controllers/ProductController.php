@@ -31,22 +31,19 @@ class ProductController extends Controller
 
     public function show(Request $request)
     {
-        $product = Product::find($request->id);
-        if ($product == null) abort(404);
+        $product = Product::findOrFail($request->id);
         return view('show')->with('product', $product);
     }
 
     public function edit(Request $request)
     {
-        $product = Product::find($request->id);
-        if ($product == null) abort(404);
+        $product = Product::findOrFail($request->id);
         return view('edit')->with('product', $product);
     }
 
     public function update(Request $request)
     {
-        $product = Product::find($request->id);
-        if ($product == null) abort(404);
+        $product = Product::findOrFail($request->id);
         $product->name = $request->name;
         $product->description = $request->description;
         $product->price = $request->price;
@@ -57,8 +54,7 @@ class ProductController extends Controller
 
     public function destroy(Request $request)
     {
-        $product = Product::find($request->id);
-        if ($product == null) abort(404);
+        $product = Product::findOrFail($request->id);
         $product->delete();
         return redirect()->route('index')->with('success-delete', 'Product ' . $request->id . ' has been deleted');
     }
