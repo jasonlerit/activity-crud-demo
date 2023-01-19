@@ -1,4 +1,4 @@
-# Crud Demo (Activity) ([Live Demo]())
+# Crud Demo (Activity)
 
 ## 💻 Tech Stack
 > - Laravel
